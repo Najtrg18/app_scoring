@@ -1,1 +1,1 @@
-web: gunicorn gettingstrated.wsgi --log-file - 
+web: sh setup.sh && streamlit run frontend.py
