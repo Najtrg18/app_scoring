@@ -95,7 +95,8 @@ with st.sidebar:
     st.text("")
     st.markdown("<h2 style='text-align: center; color: grey;'>Ce dashboard interactif est mis a disposition pour permettre de connaitre et de comprendre pour un client donne, la decision d'accord de pret ou non.</h2>", unsafe_allow_html=True)
 
-    liste = get_result("http://127.0.0.1:5000/give_ids")
+    list = requests.get("http://127.0.0.1:5000/give_ids")
+    #liste = get_result("http://127.0.0.1:5000/give_ids")
     final_liste = np.asarray(liste['array'])
     client_id = st.selectbox("Choisir le client ID", final_liste)
     st.markdown("***")
@@ -104,8 +105,8 @@ with st.sidebar:
     st.markdown("<h3 style='text-align: center; color: black;'>Ce dashboard a pour derniere version celle en date du 14/07/2022</h3>", unsafe_allow_html=True)
 
 # Recuperation des donnees concernant le client selectionne
-#client_info = get_result("http://127.0.0.1:5000/get_info/" + str(client_id)) 
-client_info = requests.get("http://127.0.0.1:5000/get_info/" + str(client_id))
+client_info = get_result("http://127.0.0.1:5000/get_info/" + str(client_id)) 
+#client_info = requests.get("http://127.0.0.1:5000/get_info/" + str(client_id))
 client_info_df = pd.DataFrame(client_info)
     
 # Container de haut avec les information relatives au client
