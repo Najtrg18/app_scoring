@@ -16,9 +16,11 @@ warnings.filterwarnings("ignore", category=UserWarning)
 #Config de l'app
 app = Flask(__name__)
 
+PATH="app_scoring/"
+
 #Chargement des données 
-df_kernel = pd.read_csv('df_kernel_reduced.csv')
-df_train = pd.read_csv('df_train_reduced.csv')
+df_kernel = pd.read_csv(PATH+'df_kernel_reduced.csv')
+df_train = pd.read_csv(PATH+'df_train_reduced.csv')
 
 #Renommage des features pour meilleure comprehension
 info_cols = {
@@ -67,8 +69,8 @@ df_train['STATUT_FAMILIAL'] = df_train['STATUT_FAMILIAL'].replace("Unknown",np.n
 all_id_client = df_kernel['SK_ID_CURR'].unique()
 
 #Chargement du modèle et seuil
-model = pickle.load(open('best_model.pkl', 'rb'))
-seuil = pickle.load(open('best_threshold.pkl', 'rb'))
+model = pickle.load(open(PATH+'best_model.pkl', 'rb'))
+seuil = pickle.load(open(PATH+'best_threshold.pkl', 'rb'))
 #seuil = 0.4
 
 class NumpyArrayEncoder(JSONEncoder):
@@ -168,4 +170,5 @@ def interpret_best(id_client):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=80)
+    app.run(debug=True)
+    #app.run(debug=True, host="0.0.0.0", port=80)
