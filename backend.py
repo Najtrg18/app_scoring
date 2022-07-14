@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 #Config de l'app
 app = Flask(__name__)
 
-PATH="app_scoring/"
+PATH=""
 
 #Chargement des données 
 df_kernel = pd.read_csv(PATH+'df_kernel_reduced.csv')
