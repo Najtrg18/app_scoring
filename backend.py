@@ -167,5 +167,7 @@ def interpret_best(id_client):
     #return json.dumps(arrayShap, cls=NumpyArrayEncoder)
 
 #lancement de l'application
+
+
 if __name__ == "__main__":
     app.run(debug=True)

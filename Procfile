@@ -1,1 +1,1 @@
-web: sh setup.sh && flask run backend.py
+web: sh setup.sh && python3 backend.py
