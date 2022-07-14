@@ -144,13 +144,25 @@ def interpret(id_client):
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X)
     arrayShap = {"array": shap_values}
+    json.dumps(arrayShap, cls=NumpyArrayEncoder)
+    
+    return json.dumps(arrayShap, cls=NumpyArrayEncoder)
+ 
+@app.route('/interpret_best/<id_client>')
+def interpret_best(id_client):
+    X = df_kernel[df_kernel['SK_ID_CURR'] == int(id_client)]   
+    ignore_features = ['TARGET','SK_ID_CURR','PREV_APP_CREDIT_PERC_MAX', 'REFUSED_APP_CREDIT_PERC_MAX', 'INSTAL_PAYMENT_PERC_MAX']
+    relevant_features = [col for col in df_kernel.columns if col not in ignore_features]
+    X = X[relevant_features]
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X)
+    arrayShap = {"array": shap_values}
     json_shap = json.dumps(arrayShap, cls=NumpyArrayEncoder)
     json_X = X.to_json(orient='records')
     client_shap = {
         'j_shap' : json_shap,
         'j_X' : json_X
-    }
-    
+    }   
     return jsonify(client_shap)
     #return json.dumps(arrayShap, cls=NumpyArrayEncoder)
 

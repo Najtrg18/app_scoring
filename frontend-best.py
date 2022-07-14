@@ -104,7 +104,8 @@ with st.sidebar:
     st.markdown("<h3 style='text-align: center; color: black;'>Ce dashboard a pour derniere version celle en date du 14/07/2022</h3>", unsafe_allow_html=True)
 
 # Recuperation des donnees concernant le client selectionne
-client_info = get_result("http://127.0.0.1:5000/get_info/" + str(client_id))  
+#client_info = get_result("http://127.0.0.1:5000/get_info/" + str(client_id)) 
+client_info = requests.get("http://127.0.0.1:5000/get_info/" + str(client_id))
 client_info_df = pd.DataFrame(client_info)
     
 # Container de haut avec les information relatives au client
@@ -239,7 +240,7 @@ with placeholder.container():
 
             fig, ax = plt.subplots(figsize=(15, 15))
             
-            interpret_shap = get_result("http://127.0.0.1:5000/interpret/" + str(client_id))
+            interpret_shap = get_result("http://127.0.0.1:5000/interpret_best/" + str(client_id))
             shap = interpret_shap['j_shap']
             finalshap = np.asarray(shap['array'])
             X = interpret_shap['j_X']
