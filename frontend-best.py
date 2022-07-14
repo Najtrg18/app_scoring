@@ -95,8 +95,8 @@ with st.sidebar:
     st.text("")
     st.markdown("<h2 style='text-align: center; color: grey;'>Ce dashboard interactif est mis a disposition pour permettre de connaitre et de comprendre pour un client donne, la decision d'accord de pret ou non.</h2>", unsafe_allow_html=True)
 
-    list = requests.get("http://127.0.0.1:5000/give_ids")
-    #liste = get_result("http://127.0.0.1:5000/give_ids")
+    #liste = requests.get("http://127.0.0.1:5000/give_ids")
+    liste = get_result("http://127.0.0.1:5000/give_ids")
     final_liste = np.asarray(liste['array'])
     client_id = st.selectbox("Choisir le client ID", final_liste)
     st.markdown("***")
