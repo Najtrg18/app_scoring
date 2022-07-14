@@ -7,10 +7,8 @@ import json
 from json import JSONEncoder
 import pandas as pd
 import numpy as np
-import sklearn
 import pickle
 import shap
-from lightgbm import LGBMClassifier
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -170,4 +168,4 @@ def interpret_best(id_client):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=80)
