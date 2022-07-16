@@ -1,2 +1,1 @@
-web: gunicorn app:app
-const PORT = process.env.PORT || 3000
+web: gunicorn --bind :$PORT --workers 1 --threads 10 --timeout 0 app:app
