@@ -96,7 +96,7 @@ with st.sidebar:
     st.markdown("<h2 style='text-align: center; color: grey;'>Ce dashboard interactif est mis a disposition pour permettre de connaitre et de comprendre pour un client donne, la decision d'accord de pret ou non.</h2>", unsafe_allow_html=True)
 
     #liste = requests.get("http://127.0.0.1:5000/give_ids")
-    liste = get_result("http://127.0.0.1:5000/give_ids")
+    liste = get_result("https://najtrg18.pythonanywhere.com/give_ids")
     final_liste = np.asarray(liste['array'])
     client_id = st.selectbox("Choisir le client ID", final_liste)
     st.markdown("***")
@@ -105,7 +105,7 @@ with st.sidebar:
     st.markdown("<h3 style='text-align: center; color: black;'>Ce dashboard a pour derniere version celle en date du 14/07/2022</h3>", unsafe_allow_html=True)
 
 # Recuperation des donnees concernant le client selectionne
-client_info = get_result("http://127.0.0.1:5000/get_info/" + str(client_id)) 
+client_info = get_result("https://najtrg18.pythonanywhere.com/get_info/" + str(client_id)) 
 #client_info = requests.get("http://127.0.0.1:5000/get_info/" + str(client_id))
 client_info_df = pd.DataFrame(client_info)
     
@@ -156,7 +156,7 @@ with placeholder.container():
         #feature = list(info_cols_vis.keys())\
                 #[list(info_cols_vis.values()).index(var)]    
             
-        compare_info = get_result("http://127.0.0.1:5000/compare/" + str(feature))  
+        compare_info = get_result("https://najtrg18.pythonanywhere.com/compare/" + str(feature))  
         compare_info_df = pd.DataFrame(compare_info)
 
         if (feature in numerical_features):                
@@ -182,7 +182,7 @@ with placeholder.container():
             st.markdown("### Scoring : Accord pret ou non du client")
             
             #Recuperation des resultats du scoring du backend
-            predict_data = get_result("http://127.0.0.1:5000/predict/" + str(client_id))
+            predict_data = get_result("https://najtrg18.pythonanywhere.com/predict/" + str(client_id))
             classe_predite = predict_data['prediction']
             client_score = predict_data['proba']*100
             seuil_banque = predict_data['seuil']*100
@@ -241,7 +241,7 @@ with placeholder.container():
 
             fig, ax = plt.subplots(figsize=(15, 15))
             
-            interpret_shap = get_result("http://127.0.0.1:5000/interpret_best/" + str(client_id))
+            interpret_shap = get_result("https://najtrg18.pythonanywhere.com/interpret_best/" + str(client_id))
             shap = interpret_shap['j_shap']
             finalshap = np.asarray(shap['array'])
             X = interpret_shap['j_X']
