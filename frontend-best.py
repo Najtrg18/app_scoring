@@ -38,8 +38,8 @@ def compare_numerical(df, feature, client_feature_val):
 
     fig, ax = plt.subplots(1, 1, figsize = (10, 5), dpi=300)
     #fig = plt.figure(figsize = (10, 5))
-    df0 = df.loc[data['TARGET'] == 0]
-    df1 = df.loc[data['TARGET'] == 1]
+    df0 = df.loc[df['TARGET'] == 0]
+    df1 = df.loc[df['TARGET'] == 1]
     
     sns.kdeplot(df0[feature].dropna(), label = 'Bon client', color='g')
     sns.kdeplot(df1[feature].dropna(), label = 'Mauvais client', color='r')
