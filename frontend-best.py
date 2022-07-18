@@ -248,7 +248,7 @@ with placeholder.container():
             finalshap = np.asarray(shap['array'])
             X = interpret_shap['j_X']
             X_df = pd.DataFrame(X)
-            shap.summary_plot(finalshap[1], X_df, plot_type ="bar", max_display=5, color_bar=False, plot_size=(8, 8))
+            shap.force_plot(finalshap[1], X_df, plot_type ="bar", max_display=5, color_bar=False, plot_size=(8, 8))
             
             st.pyplot(fig)
 
