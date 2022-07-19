@@ -23,8 +23,8 @@ warnings.filterwarnings("ignore")
 #Chargement du logo
 LOGO_IMAGE = "logo.png"
 
-#PATH_B = "http://54.175.61.168:5000/"
-PATH_B = "http://127.0.0.1:5000/"
+PATH_B = "http://54.175.61.168:5000/"
+#1PATH_B = "http://127.0.0.1:5000/"
 
 numerical_features = ['AGE', 'NB_ENFANTS', 'NB_ANNEES_EMPLOI', 'REVENUS','MONTANT_CREDIT','MONTANT_ANNUITES','SCORE_SOURCE_1','SCORE_SOURCE_2','SCORE_SOURCE_3']
 
