@@ -11,7 +11,7 @@ import json
 import requests
 from lightgbm import LGBMClassifier
 import time # pour temps reel
-import plotly.express as px # interactivite
+#import plotly.express as px # interactivite
 import matplotlib.pyplot as plt
 import seaborn as sns
 import math
