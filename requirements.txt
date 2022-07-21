@@ -1,0 +1,11 @@
+Flask
+lightgbm
+pandas
+shap
+scikit_learn
+numpy
+matplotlib
+plotly
+scikit_learn
+seaborn
+streamlit
