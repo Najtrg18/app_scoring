@@ -24,7 +24,7 @@ PATH_O = "Objects/"
 LOGO_IMAGE = PATH_O+"logo.png"
 
 #Lien vers le backend
-PATH_B = "http://3.87.56.168:8080/" #if backend on AWS cloud
+PATH_B = "http://44.202.19.198:5000/" #if backend on AWS cloud
 #PATH_B = "http://127.0.0.1:5000/" #if backend is local
 
 numerical_features = ['AGE', 'NB_ENFANTS', 'NB_ANNEES_EMPLOI', 'REVENUS','MONTANT_CREDIT','MONTANT_ANNUITES','SCORE_SOURCE_1','SCORE_SOURCE_2','SCORE_SOURCE_3']
